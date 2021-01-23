@@ -1,0 +1,109 @@
+{include file="root/common/header"}
+<main class="app-layout-content">
+    <div class="container-fluid p-y-md">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                <a class="card bg-red bg-inverse" href="javascript:void(0)">
+                    <div class="card-block clearfix">
+                        <div class="pull-right">
+                            <p class="h6 text-muted m-t-0 m-b-xs">用户总数</p>
+                            <p class="h3 m-t-sm m-b-0">{$num.user}</p>
+                        </div>
+                        <div class="pull-left m-r">
+                            <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="ion-ios-people fa-1-5x"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a class="card bg-red bg-inverse" href="javascript:void(0)">
+                    <div class="card-block clearfix">
+                        <div class="pull-right">
+                            <p class="h6 text-muted m-t-0 m-b-xs">新增用户</p>
+                            <p class="h3 m-t-sm m-b-0">{$num.addUser}</p>
+                        </div>
+                        <div class="pull-left m-r">
+                            <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="fa fa-user-plus fa-1-5x"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <a class="card bg-red bg-inverse" href="javascript:void(0)">
+                    <div class="card-block clearfix">
+                        <div class="pull-right">
+                            <p class="h6 text-muted m-t-0 m-b-xs">卡密数量</p>
+                            <p class="h3 m-t-sm m-b-0">{$num.km}</p>
+                        </div>
+                        <div class="pull-left m-r">
+                            <span class="img-avatar img-avatar-48 bg-gray-light-o"><i class="fa fa-ticket fa-1-5x"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-red bg-inverse">
+                        <h4>系统设置</h4>
+                    </div>
+                    <div class="card-block">
+                        <form>
+                            <div class="form-group">
+                                <label class="col-xs-12">网站名称</label>
+                                <input type="text" name="webName" value="{$rootInfo.webName}" class="form-control" placeholder="请输入网站名称" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-12">监控密钥</label>
+                                <input type="text" name="key" value="{$rootInfo.key}" class="form-control" placeholder="请输入监控密钥" />
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-12">网站公告</label>
+                                <textarea class="form-control" name="notice" rows="3" placeholder="请输入公告">{$rootInfo.notice}</textarea>
+                            </div>
+                            <button type="button" onclick="rootEdit();" class="btn btn-app-red btn-block">修 改</button>
+                            <hr>
+                            <div class="form-group">
+                                <label class="col-xs-12">管理员密码</label>
+                                <input type="text" name="pwd"  class="form-control" placeholder="请输入新的管理员密码" />
+                            </div>
+                            <button type="button" onclick="pwdEdit();" class="btn btn-app-red btn-block">修 改</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header bg-red bg-inverse">
+                        <h4>作者信息</h4>
+                    </div>
+                    <div class="card-block">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <p>系统监控说明(监控频率建议1分钟)：</p>
+                            <p>刷歌and签到监控链接：</p>
+                            <p>http://{$_SERVER['HTTP_HOST']}/api/api/music?key=监控密钥</p>
+                            <p>更新用户Cookie链接：</p>
+                            <p><p>http://{$_SERVER['HTTP_HOST']}/api/api/upCookie?key=监控密钥</p></p>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">系统名称 <span style="background-color: #f6511d;" class="badge">阳阳网易云任务</span></li>
+                            <li class="list-group-item">作者 <span style="background-color: #f6511d;"class="badge">阳阳</span></li>
+                            <li class="list-group-item">作者QQ <span style="background-color: #f6511d;" class="badge">2914443983</span></li>
+                            <li class="list-group-item">QQ群 <span style="background-color: #f6511d;" class="badge">？？？？</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</div>
+<!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+<div class="app-ui-mask-modal"></div>
+{include file="root/common/footer"}

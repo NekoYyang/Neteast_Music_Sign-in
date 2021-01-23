@@ -1,0 +1,65 @@
+{include file="index/common/header"}
+<body class="app-ui">
+    <div class="app-layout-canvas">
+        <div class="app-layout-container">
+
+           
+
+            <main class="app-layout-content">
+
+        <!-- Page header -->
+        <figure class="banner bg-img bg-app bg-inverse" data-height="500" style="background-image: url(https://p5.music.126.net/obj/wo3DlcOGw6DClTvDisK1/4617849316/a7d0/a9d2/d022/043dca7ba8fa56037ffb29392cb9a3bf.png)">
+            <figcaption class="banner-caption">
+                <div class="container">
+                    <div class="row vcenter-md">
+                        <div class="col-md-12  text-center ">
+                            <h1 class="display-2 m-y"><b>{$rootInfo.webName}</b></h1>
+                            <p class="lead m-b-md">自动签到、每日300首歌曲任务</p>
+                            {eq name="isLogin" value="true"}
+                                <a class="btn  btn-app-red btn-lg  btn-pill" href="/index/user/index.html">用户中心</a>
+                            {else/}
+                                <a class="btn  btn-app-red btn-lg  btn-pill" href="/index/index/login.html">立即体验</a>
+                            {/eq}
+                        </div>
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .container -->
+            </figcaption>
+        </figure>
+        <!-- End page header -->
+
+                <div class="section bg-white">
+                    <div class="container p-y-xl b-b">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <i class="fa fa-music text-muted fa-4x"></i>
+                                <h4 class="m-t-0">秒刷300首歌曲</h4>
+                                </div>
+                            <div class="col-md-4">
+                                <i class="fa fa-rocket text-muted fa-4x"></i>
+                                <h4 class="m-t-0">自动签到</h4>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="fa fa-shield text-muted fa-4x"></i>
+                                <h4 class="m-t-0">安全稳定</h4>
+                            </div>
+                        </div>
+                        <!-- .row -->
+                    </div>
+                    <!-- .container -->
+                </div>
+
+
+
+            </main>
+
+           
+
+        </div>
+        <!-- .app-layout-container -->
+    </div>
+    <!-- .app-layout-canvas -->
+
+    <!-- End Apps Modal -->
+{include file="index/common/footer"}

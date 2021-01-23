@@ -1,0 +1,177 @@
+
+        <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
+        <script src="/public/static/index/assets/js/core/jquery.min.js"></script>
+        <script src="/public/static/index/assets/js/core/bootstrap.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.slimscroll.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.scrollLock.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.placeholder.min.js"></script>
+        <script src="/public/static/index/assets/js/app.js"></script>
+        <script src="/public/static/index/assets/js/app-custom.js"></script>
+
+        <!-- Page Plugins -->
+        <script src="/public/static/index/assets/js/plugins/slick/slick.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/chartjs/Chart.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.pie.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.stack.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.resize.min.js"></script>
+        
+        <!-- layer -->
+        <script src="/public/static/layer/layer.js"></script>
+
+        <!-- Page JS Code -->
+        <script src="/public/static/index/assets/js/pages/index.js"></script>
+
+        <script>
+            function logOut(){
+                layer.confirm("真的要走吗？？？", {
+                btn: ['别留我了','取消'] //按钮
+                },function(){
+                    $.ajax({
+                        url: "/root/root/logOut",
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            window.location.href='/root/index/index.html';
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                });
+            }
+
+            function createKm(){
+                var days = $("input[name='days']").val();
+                var num = $("input[name='num']").val();
+                if(days == '' || num == ''){
+                    layer.msg("天数和数量不能为空");
+                }else{
+                    $.ajax({
+                        url: "/root/root/createKm",
+                        data: {
+                            days: days,
+                            num: num
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            if(data.status == 1){
+                                layer.confirm(data.data.km, {
+                                btn: ['确定'] //按钮
+                                },function(){
+                                    window.location.href='';
+                                });
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                }
+            }
+
+            function kmDel(kid){
+                $.ajax({
+                    url: "/root/root/kmDel",
+                    data: {
+                        kid:kid
+                    },
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        if(data.status == 1){
+                            layer.confirm(data.msg, {
+                            btn: ['确定'] //按钮
+                            },function(){
+                                window.location.href='';
+                            });
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    },
+                    error: function(data){
+                        layer.msg("系统君短路了！");
+                    }
+                });
+            }
+
+            function userDel(uid){
+                $.ajax({
+                    url: "/root/root/userDel",
+                    data: {
+                        uid:uid
+                    },
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        if(data.status == 1){
+                            layer.confirm(data.msg, {
+                            btn: ['确定'] //按钮
+                            },function(){
+                                window.location.href='';
+                            });
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    },
+                    error: function(data){
+                        layer.msg("系统君短路了！");
+                    }
+                });
+            }
+
+            function rootEdit(){
+                var webName= $("input[name='webName']").val();
+                var key = $("input[name='key']").val();
+                var notice = $("textarea[name='notice']").val();
+                if(webName == '' || key == '' || notice == ''){
+                    layer.msg("信息不完整");
+                }else{
+                    $.ajax({
+                        url: "/root/root/rootEdit",
+                        data: {
+                            webName: webName,
+                            key: key,
+                            notice: notice
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            layer.msg(data.msg);
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                }
+            }
+
+            function pwdEdit(){
+                var pwd= $("input[name='pwd']").val();
+                if(pwd==''){
+                    layer.msg("密码不能为空");
+                }else{
+                    $.ajax({
+                        url: "/root/root/pwdEdit",
+                        data: {
+                            pwd: pwd
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            layer.msg(data.msg);
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                }
+            }
+        </script>
+
+    </body>
+
+</html>

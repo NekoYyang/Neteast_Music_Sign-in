@@ -1,0 +1,60 @@
+
+        <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
+        <script src="/public/static/index/assets/js/core/jquery.min.js"></script>
+        <script src="/public/static/index/assets/js/core/bootstrap.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.slimscroll.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.scrollLock.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.placeholder.min.js"></script>
+        <script src="/public/static/index/assets/js/app.js"></script>
+        <script src="/public/static/index/assets/js/app-custom.js"></script>
+
+        <!-- Page Plugins -->
+        <script src="/public/static/index/assets/js/plugins/slick/slick.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/chartjs/Chart.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.pie.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.stack.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.resize.min.js"></script>
+        
+        <!-- layer -->
+        <script src="/public/static/layer/layer.js"></script>
+
+        <!-- Page JS Code -->
+        <script src="/public/static/index/assets/js/pages/index.js"></script>
+        <script>
+            function login(){
+                var username = $("input[name='username']").val();
+                var password = $("input[name='password']").val();
+                if(username == '' || password == ''){
+                    layer.msg("账号和密码不能为空");
+                }else{
+                    $.ajax({
+                        url: "/root/index/index.html",
+                        data: {
+                            username: username,
+                            password: password
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            if(data.status == 1){
+                                layer.confirm(data.msg, {
+                                btn: ['前往后台','取消'] //按钮
+                                },function(){
+                                    window.location.href='/root/root/index.html';
+                                });
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                }
+            }
+        </script>
+
+    </body>
+
+</html>

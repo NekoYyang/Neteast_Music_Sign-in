@@ -1,0 +1,102 @@
+
+        <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
+        <script src="/public/static/index/assets/js/core/jquery.min.js"></script>
+        <script src="/public/static/index/assets/js/core/bootstrap.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.slimscroll.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.scrollLock.min.js"></script>
+        <script src="/public/static/index/assets/js/core/jquery.placeholder.min.js"></script>
+        <script src="/public/static/index/assets/js/app.js"></script>
+        <script src="/public/static/index/assets/js/app-custom.js"></script>
+
+        <!-- Page Plugins -->
+        <script src="/public/static/index/assets/js/plugins/slick/slick.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/chartjs/Chart.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.pie.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.stack.min.js"></script>
+        <script src="/public/static/index/assets/js/plugins/flot/jquery.flot.resize.min.js"></script>
+        
+        <!-- layer -->
+        <script src="/public/static/layer/layer.js"></script>
+
+        <!-- Page JS Code -->
+        <script src="/public/static/index/assets/js/pages/index.js"></script>
+
+        <script>
+            function openVip(){
+                var km = $("input[name='km']").val();
+                if(km == ''){
+                    layer.msg("卡密不能为空");
+                }else{
+                    $.ajax({
+                        url: "/index/user/openVip",
+                        data: {
+                           km: km
+                        },
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            if(data.status == 1){
+                                layer.confirm(data.msg, {
+                                btn: ['确定'] //按钮
+                                },function(){
+                                    window.location.href='';
+                                });
+                            }else{
+                                layer.msg(data.msg);
+                            }
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                }
+            }
+
+            function daka(){
+                var load =layer.msg('执行中', {icon: 16,shade: 0.01,time:0});
+                $.ajax({
+                    url: "/index/user/daka",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        layer.close(load);
+                        if(data.status == 1){
+                            layer.confirm(data.msg, {
+                            btn: ['确定'] //按钮
+                            },function(){
+                                window.location.href='';
+                            });
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    },
+                    error: function(data){
+                        layer.close(load);
+                        layer.msg("系统君短路了！");
+                    }
+                });
+            }
+
+            function logOut(){
+                layer.confirm("真的要走吗？？？", {
+                btn: ['别留我了','取消'] //按钮
+                },function(){
+                    $.ajax({
+                        url: "/index/user/logOut",
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            window.location.href='/index/index/index.html';
+                        },
+                        error: function(data){
+                            layer.msg("系统君短路了！");
+                        }
+                    });
+                });
+            }
+        </script>
+
+    </body>
+
+</html>

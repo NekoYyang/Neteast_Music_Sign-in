@@ -1,0 +1,71 @@
+{include file="root/common/header"}
+<main class="app-layout-content">
+    <div class="container-fluid p-y-md">
+        <div class="row">
+            <div class="col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-red bg-inverse">
+                        <h4>生成VIP卡密</h4>
+                    </div>
+                    <div class="card-block">
+                        <form>
+                            <div class="form-group">
+                                <label class="sr-only" for="frontend_login_email">VIP天数</label>
+                                <input type="text" name="days" class="form-control" placeholder="请输入VIP天数" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="frontend_login_password">卡密数量</label>
+                                <input type="text" name="num" class="form-control" placeholder="请输入卡密数量" />
+                            </div>
+                            <button type="button" onclick="createKm();" class="btn btn-app-red btn-block">生 成</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-8">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>KID</th>
+                                  <th>卡密</th>
+                                  <th>使用者</th>
+                                  <th>天数</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {volist name='list' id='km'}
+                                <tr>
+                                    <td>{$km.kid}</td>
+                                    <td>{$km.km}</td>
+                                    <td>
+                                        {eq name="$km.uin" value=""}
+                                        <font color="green">暂未使用</font>
+                                        {else/}
+                                        <font color="red">{$km.uin}</font>
+                                        {/eq}
+                                    </td>
+                                    <td>{$km.days}天</td>
+                                    <td><button onclick="kmDel({$km.kid});" class="btn btn-xs btn-app-red" type="button">删除</button></td>
+                                </tr>
+                                {/volist}
+                              </tbody>
+                            </table>
+                          </div>
+                          <center>{$list->render()}</center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</div>
+<!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+<div class="app-ui-mask-modal"></div>
+{include file="root/common/footer"}

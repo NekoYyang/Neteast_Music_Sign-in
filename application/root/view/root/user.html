@@ -1,0 +1,69 @@
+{include file="root/common/header"}
+<main class="app-layout-content">
+    <div class="container-fluid p-y-md">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>UID</th>
+                                  <th>账号</th>
+                                  <th>VIP到期时间</th>
+                                  <th>CK状态</th>
+                                  <th>上次执行时间</th>
+                                  <th>注册时间</th>
+                                  <th>操作</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {volist name='list' id='user'}
+                                <tr>
+                                    <td>{$user.uid}</td>
+                                    <td>{$user.uin}</td>
+                                    <td>
+                                        {eq name="$user.vipDate" value=""}
+                                        暂未开通
+                                        {else/}
+                                        {$user.vipDate}
+                                        {/eq}
+                                    </td>
+                                    <td>
+                                        {eq name="$user.cookieStatus" value="1"}
+                                        <font color="green">正常</font>
+                                        {else/}
+                                        <font color="red">失效</font>
+                                        {/eq}
+                                    </td>
+                                    <td>
+                                        {eq name="$user.executeDate" value=""}
+                                        暂未执行
+                                        {else/}
+                                        {$user.executeDate}
+                                        {/eq}
+                                    </td>
+                                    <td>
+                                        {$user.addDate}
+                                    </td>
+                                    <td><button onclick="userDel({$user.uid});" class="btn btn-xs btn-app-red" type="button">删除</button></td>
+                                </tr>
+                                {/volist}
+                              </tbody>
+                            </table>
+                          </div>
+                          <center>{$list->render()}</center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</div>
+<!-- .app-layout-container -->
+</div>
+<!-- .app-layout-canvas -->
+<div class="app-ui-mask-modal"></div>
+{include file="root/common/footer"}

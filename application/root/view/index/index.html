@@ -1,0 +1,62 @@
+{include file="index/common/header"}
+<body class="app-ui">
+    <div class="app-layout-canvas">
+        <div class="app-layout-container">
+            <main class="app-layout-content">
+
+                <!-- Page header -->
+                <div class="page-header bg-green bg-inverse" style="padding: 0;background-color: #f6511d;">
+                    <div class="container">
+                        <!-- Section Content -->
+                        <div class="p-y-lg text-center">
+                            <h2 class="display-2">后台登陆</h2>
+                            </div>
+                        <!-- End Section Content -->
+                    </div>
+                </div>
+                <!-- End Page header -->
+
+                <!-- Page content -->
+                <div class="page-content">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Login card -->
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <form>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="frontend_login_email">账号</label>
+                                                <input type="text" name="username" class="form-control" placeholder="请输入账号" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="frontend_login_password">密码</label>
+                                                <input type="password" name="password" class="form-control" placeholder="请输入密码" />
+                                            </div>
+                                            <button type="button" onclick="login();" class="btn btn-app-red btn-block">立即登陆</button>
+                                        </form>
+                                    </div>
+                                    <!-- .card-block -->
+                                </div>
+                                <!-- .card -->
+                            </div>
+                            <!-- .col-md-6 -->
+                            <!-- End login -->
+
+
+                        </div>
+                        <!-- .row -->
+                    </div>
+                    <!-- .container -->
+                </div>
+                <!-- End page content -->
+            </main>
+
+        </div>
+        <!-- .app-layout-container -->
+    </div>
+    <!-- .app-layout-canvas -->
+
+   
+
+{include file="index/common/footer"}
