@@ -12,11 +12,9 @@ VIP卡密机制
 5.后台账号admin，密码666666
 
 同时，我也搭建了这个程序，供大家免费使用。
-网址：http://music.wy.yyrobot.club/
+没钱买服务器了 倒闭了
 
 伪静态规则：
-
-
 阿帕奇：
 RewriteEngine on
 RewriteBase /
