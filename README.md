@@ -12,10 +12,11 @@ VIP卡密机制
 5.后台账号admin，密码666666
 
 同时，我也搭建了这个程序，供大家免费使用。
+
 没钱买服务器了 倒闭了
 
 伪静态规则：
-阿帕奇：
+Apache：
 RewriteEngine on
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -23,7 +24,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?s=/$1 [QSA,PT,L]
 
 Nginx：
-
 if (!-d $request_filename){
         set $rule_0 1$rule_0;
 }
